@@ -1,0 +1,24 @@
+{
+  "chat_protocol":
+  {
+    "join": {
+      "type": "join",
+      "username": "user_psuedoname",
+      "color": "color_code",
+      "room_code": "code",
+      "timestamp": "time"
+    },
+    "chat": {
+      "type": "chat",
+      "username": "user_psuedoname",
+      "color": "color_code",
+      "message": "message_content",
+      "timestamp": "time"
+    },
+    "leave": {
+      "type": "leave",
+      "username": "user_psuedoname",
+      "timestamp": "time"
+    }
+  }
+}
