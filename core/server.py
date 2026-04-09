@@ -1,6 +1,6 @@
 import threading
 import socket
-from python import protocol
+from core import protocol
 
 
 HOST = "0.0.0.0"

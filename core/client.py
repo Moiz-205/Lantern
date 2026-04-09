@@ -1,5 +1,5 @@
 import socket
-from python import protocol
+from core import protocol
 
 
 def connect(host, port, username, color, room_code):

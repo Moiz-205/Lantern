@@ -1,4 +1,4 @@
-from python import server, client
+from core import server, client
 import threading
 
 
