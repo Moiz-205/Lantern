@@ -1,5 +1,5 @@
 from textual.app import App, ComposeResult
-from textual.widgets import Input, Button, RichLog
+from textual.widgets import Input, Button, RichLog, Footer
 from textual.screen import Screen
 
 
@@ -30,6 +30,8 @@ class HomeScreen(Screen):
 
         # multi screen back button
         yield Button("Back", id="back")
+
+        yield Footer()
 
     def on_mount(self):
         self.query_one("#room_code").display = False
@@ -165,6 +167,15 @@ class ChatScreen(Screen):
 
 class LaternApp(App):
     CSS_PATH = "lantern.tcss"
+    BINDINGS = [
+        ("ctrl+q", "quit", "Quit"),
+        ("up", "focus_previous", "Up"),
+        ("down", "focus_next", "Down"),
+        # ("escape", "back", "Back"),
+    ]
+
+    def compose(self) -> ComposeResult:
+        yield Footer()
 
     def on_mount(self):
         self.push_screen(HomeScreen())
