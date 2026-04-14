@@ -80,9 +80,6 @@ class HomeScreen(Screen):
 
             self.query_one("#generated_code", Label).update(f"ROOM CODE: {ROOM}")
 
-            # upon selecting enter, host joins the chat and room is created
-            # and host_ip is broadcasted (later UDP functionality)
-
         elif event.button.id == "join":
             self.query_one("#host").display = False
             self.query_one("#join").display = False
@@ -132,11 +129,6 @@ class HomeScreen(Screen):
             self.query_one("#back").display = False
 
         elif event.button.id == "create_room":
-            # check condition is user can be host or is user actually able to host
-            # like connected to hotspot or LAN.
-            # if it is true then host will display its hosting_ip and create a room.
-            # (in this case host will be broadcasting its ip UDP Broadcast)
-
             threading.Thread(target=server.start_server, args=(ROOM,), daemon=True).start()
             client.connect(host="127.0.0.1", port=5000, username=display_name, color=display_color, room_code=ROOM)
 
@@ -147,7 +139,6 @@ class HomeScreen(Screen):
             room_code = self.query_one("#room_code", Input).value
             host_ip = self.query_one("#host_ip", Input).value
 
-            # if room_code == ROOM and host_ip == HOST:
             try:
                 client.connect(host=host_ip, port=5000, username=display_name, color=display_color, room_code=room_code)
 
